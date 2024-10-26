@@ -90,13 +90,16 @@ export default function Main() {
     }
   };
 
-  const editUser = (user: User) => {
-    setName(user.name);
-    setEmail(user.email);
-    setRole(user.role);
-    setPhone(user.phone);
-    setGender(user.gender);
-    setEditUserId(user.id);
+  const editUser = (user: User): Promise<void> => {
+    return new Promise((resolve) => {
+      setName(user.name);
+      setEmail(user.email);
+      setRole(user.role);
+      setPhone(user.phone);
+      setGender(user.gender);
+      setEditUserId(user.id);
+      resolve();
+    });
   };
 
   const deleteUser = async (id: string) => {
@@ -113,8 +116,6 @@ export default function Main() {
       <h1 className="text-3xl font-bold mb-6 text-center text-white animate-bounce">
         User Management
       </h1>
-
-      {/* User Form */}
       <div className="mb-8">
         <UserForm
           name={name}
@@ -133,9 +134,6 @@ export default function Main() {
           editUserId={editUserId}
         />
       </div>
-
-      {/* User Cards Grid */}
-
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in">
         {loading ? (
           <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 rounded-xl z-10">

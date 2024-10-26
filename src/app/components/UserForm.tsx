@@ -18,7 +18,7 @@ type UserFormProps = {
   setImageFile: (file: File | null) => void;
   addUser: (e: FormEvent) => void;
   editUserId: string | null;
-};
+}
 
 const UserForm: React.FC<UserFormProps> = ({
   name,
@@ -26,7 +26,7 @@ const UserForm: React.FC<UserFormProps> = ({
   role,
   phone,
   gender,
-  imageFile,
+  // imageFile,
   setName,
   setEmail,
   setRole,

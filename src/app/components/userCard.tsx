@@ -1,50 +1,51 @@
-// components/UserCard.tsx
-
+"use client";
 import Image from "next/image";
 import { useState } from "react";
-import defualtProfile from "../../../public/9434619.jpg";
+import defaultProfile from "../../../public/9434619.jpg";
+
+type User = {
+  id: string;
+  name: string;
+  email: string;
+  role: string;
+  phone: string;
+  gender: string;
+  image: string;
+};
 
 type UserCardProps = {
-  user: {
-    id: string;
-    name: string;
-    email: string;
-    role: string;
-    phone: string;
-    gender: string;
-    image: string;
-  };
-  editUser: (user: any) => void;
-  deleteUser: (id: string) => void;
+  user: User;
+  editUser: (user: User) => Promise<void>; // Ensure this returns a Promise
+  deleteUser: (id: string) => Promise<void>; // Ensure this returns a Promise
 };
 
 const UserCard: React.FC<UserCardProps> = ({ user, editUser, deleteUser }) => {
-  const [loading, setLoading] = useState(false); // State for loading
+  const [loading, setLoading] = useState(false);
 
   const handleEdit = async () => {
     setLoading(true);
     try {
-      await editUser(user); // Call editUser and wait
+      await editUser(user);
     } catch (error) {
       console.error("Error editing user:", error);
     } finally {
-      setLoading(false); // Hide loader after edit is done
+      setLoading(false);
     }
   };
 
   const handleDelete = async () => {
     setLoading(true);
     try {
-      await deleteUser(user.id); // Call deleteUser and wait
+      await deleteUser(user.id);
     } catch (error) {
       console.error("Error deleting user:", error);
     } finally {
-      setLoading(false); // Hide loader after delete is done
+      setLoading(false);
     }
   };
 
   return (
-    <div className=" container relative border rounded-xl shadow-lg p-6 hover:shadow-2xl hover:scale-105 transition-all duration-500 backdrop-blur-2xl transform-gpu">
+    <div className="container relative border rounded-xl shadow-lg p-6 hover:shadow-2xl hover:scale-105 transition-all duration-500 backdrop-blur-2xl transform-gpu">
       {loading && (
         <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 rounded-xl z-10">
           <svg
@@ -72,7 +73,7 @@ const UserCard: React.FC<UserCardProps> = ({ user, editUser, deleteUser }) => {
       <div className="flex flex-col items-center sm:flex-row sm:items-start gap-4">
         {user.image && (
           <Image
-            src={user.image ? user.image : defualtProfile}
+            src={user.image ? user.image : defaultProfile}
             alt="user"
             className="w-20 h-20 object-cover rounded-full shadow-md hover:shadow-lg transition-transform transform hover:scale-110"
             width={80}
@@ -93,14 +94,14 @@ const UserCard: React.FC<UserCardProps> = ({ user, editUser, deleteUser }) => {
         <button
           onClick={handleEdit}
           className="px-4 py-2 bg-gray-700 text-white rounded-full hover:bg-gray-600 transition-colors duration-300"
-          disabled={loading} // Disable button while loading
+          disabled={loading}
         >
           ✏️ Edit
         </button>
         <button
           onClick={handleDelete}
           className="px-4 py-2 bg-red-600 text-white rounded-full hover:bg-red-500 transition-colors duration-300"
-          disabled={loading} // Disable button while loading
+          disabled={loading}
         >
           🗑️ Delete
         </button>
