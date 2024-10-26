@@ -1,5 +1,6 @@
-"use client"
 
+
+"use client"
 // src/firebase.ts
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
