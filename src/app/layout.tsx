@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import backgroundImage from "../../public/bgimage.png"
+import backgroundImage from "../../public/bgimage.png";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -30,13 +30,28 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         style={{
           backgroundImage: `url(${backgroundImage.src})`,
-          backgroundRepeat:  "no-repeat",
+          backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
-          width: '100%',
-          height: '100vh'
+          width: "100%",
+          height: "100vh",
+          position: "relative",
         }}
       >
-        {children}
+        {/* Overlay */}
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            backgroundColor: "rgba(0, 0, 0, 0.5)", // Adjust the color and opacity as needed
+            zIndex: 1,
+          }}
+        ></div>
+
+        {/* Content */}
+        <div style={{ position: "relative", zIndex: 2 }}>{children}</div>
       </body>
     </html>
   );

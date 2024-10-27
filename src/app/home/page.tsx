@@ -13,6 +13,7 @@ import {
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import UserForm from "../components/UserForm"; // Import UserForm
 import UserCard from "../components/userCard"; // Import UserCard
+import * as XLSX from "xlsx"; // Import xlsx library
 
 type User = {
   id: string;
@@ -111,6 +112,13 @@ export default function Main() {
     }
   };
 
+  const exportToExcel = (data: User[]) => {
+    const workbook = XLSX.utils.book_new();
+    const worksheet = XLSX.utils.json_to_sheet(data);
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Users");
+    XLSX.writeFile(workbook, "users_data.xlsx");
+  };
+
   return (
     <div className="p-6">
       <h1 className="text-3xl font-bold mb-6 text-center text-white animate-bounce">
@@ -133,6 +141,22 @@ export default function Main() {
           addUser={addUser}
           editUserId={editUserId}
         />
+      </div>
+      <div className="flex justify-end mb-6">
+        <a className="downloadBtn" onClick={() => exportToExcel(users)}>
+          <svg
+            viewBox="0 0 256 256"
+            height="32"
+            width="38"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M74.34 85.66a8 8 0 0 1 11.32-11.32L120 108.69V24a8 8 0 0 1 16 0v84.69l34.34-34.35a8 8 0 0 1 11.32 11.32l-48 48a8 8 0 0 1-11.32 0ZM240 136v64a16 16 0 0 1-16 16H32a16 16 0 0 1-16-16v-64a16 16 0 0 1 16-16h52.4a4 4 0 0 1 2.83 1.17L111 145a24 24 0 0 0 34 0l23.8-23.8a4 4 0 0 1 2.8-1.2H224a16 16 0 0 1 16 16m-40 32a12 12 0 1 0-12 12a12 12 0 0 0 12-12"
+              fill="currentColor"
+            ></path>
+          </svg>
+          download
+        </a>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in">
         {loading ? (

@@ -93,14 +93,14 @@ const UserCard: React.FC<UserCardProps> = ({ user, editUser, deleteUser }) => {
       <div className="mt-4 flex justify-center sm:justify-start gap-4">
         <button
           onClick={handleEdit}
-          className="px-4 py-2 bg-gray-700 text-white rounded-full hover:bg-gray-600 transition-colors duration-300"
+          className="px-4 py-2 border-4 border-gray-800 bg-white text-gray-800 rounded-md hover:bg-gray-600 hover:text-white transition-colors duration-300"
           disabled={loading}
         >
           ✏️ Edit
         </button>
         <button
           onClick={handleDelete}
-          className="px-4 py-2 bg-red-600 text-white rounded-full hover:bg-red-500 transition-colors duration-300"
+          className="px-4 py-2 border-4 border-gray-800 bg-white text-gray-800 rounded-md hover:bg-gray-600 hover:text-white transition-colors duration-300"
           disabled={loading}
         >
           🗑️ Delete

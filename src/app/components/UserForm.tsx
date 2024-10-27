@@ -18,7 +18,7 @@ type UserFormProps = {
   setImageFile: (file: File | null) => void;
   addUser: (e: FormEvent) => void;
   editUserId: string | null;
-}
+};
 
 const UserForm: React.FC<UserFormProps> = ({
   name,
@@ -48,7 +48,7 @@ const UserForm: React.FC<UserFormProps> = ({
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
-          className="flex-1 p-3 backdrop-blur-2xl bg-white/30 border border-gray-600 rounded-md shadow-sm text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+          className="flex-1 p-3 backdrop-blur-2xl bg-white/30 border border-gray-600 rounded-md shadow-sm text-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-900 transition-all"
         />
         <input
           type="email"
@@ -56,7 +56,7 @@ const UserForm: React.FC<UserFormProps> = ({
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-          className="flex-1 p-3 backdrop-blur-2xl bg-white/30 border-gray-600 rounded-md shadow-sm text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+          className="flex-1 p-3 backdrop-blur-2xl bg-white/30 border-gray-600 rounded-md shadow-sm text-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-900 transition-all"
         />
         <input
           type="text"
@@ -64,7 +64,7 @@ const UserForm: React.FC<UserFormProps> = ({
           value={role}
           onChange={(e) => setRole(e.target.value)}
           required
-          className="flex-1 p-3 backdrop-blur-2xl bg-white/30 border border-gray-600 rounded-md shadow-sm text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+          className="flex-1 p-3 backdrop-blur-2xl bg-white/30 border border-gray-600 rounded-md shadow-sm text-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-900 transition-all"
         />
         <input
           type="tel"
@@ -72,14 +72,14 @@ const UserForm: React.FC<UserFormProps> = ({
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
           required
-          className="flex-1 p-3 backdrop-blur-2xl bg-white/30 border border-gray-600 rounded-md shadow-sm text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+          className="flex-1 p-3 backdrop-blur-2xl bg-white/30 border border-gray-600 rounded-md shadow-sm text-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-900 transition-all"
         />
         <input
           type="file"
           accept="image/*"
           onChange={(e) => setImageFile(e.target.files?.[0] || null)}
           required
-          className="flex-1 p-3 backdrop-blur-2xl bg-white/30 border border-gray-600 rounded-md shadow-sm text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+          className="flex-1 p-3 backdrop-blur-2xl bg-white/30 border border-gray-600 rounded-md shadow-sm text-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-900 transition-all"
         />
       </div>
       <div className="mb-4 text-white">
@@ -88,29 +88,29 @@ const UserForm: React.FC<UserFormProps> = ({
           <div
             className={`flex items-center justify-center w-20 h-10 border-2 rounded-lg cursor-pointer transition duration-300 ${
               gender === "Male"
-                ? "border-gray-600 bg-gray-300"
-                : "border-gray-400 bg-white"
+                ? "border-gray-900 bg-gray-600 text-white" // Active state for Male
+                : "border-gray-800 bg-white text-gray-800" // Inactive state for Male
             }`}
             onClick={() => setGender("Male")}
           >
-            <div className="text-gray-800 font-semibold">Male</div>
+            <div className="font-semibold">Male</div>
           </div>
           <div
             className={`flex items-center justify-center w-20 h-10 border-2 rounded-lg cursor-pointer transition duration-300 ${
               gender === "Female"
-                ? "border-gray-600 bg-gray-300"
-                : "border-gray-400 bg-white"
+                ? "border-gray-800 bg-gray-600 text-white" // Active state for Female
+                : "border-gray-800 bg-white text-gray-800" // Inactive state for Female
             }`}
             onClick={() => setGender("Female")}
           >
-            <div className="text-gray-800 font-semibold">Female</div>
+            <div className="font-semibold">Female</div>
           </div>
         </div>
       </div>
 
       <button
         type="submit"
-        className="w-full p-3 bg-gradient-to-r from-blue-700 to-blue-900 text-white rounded-md shadow-md hover:bg-gradient-to-r hover:from-blue-800 hover:to-blue-600 transition-transform transform hover:scale-105"
+        className="w-full p-3 border-4 border-gray-800 bg-white text-gray-800  hover:bg-gray-600 hover:text-white  rounded-md shadow-md hover:bg-gradient-to-r  transition-transform transform hover:scale-105"
       >
         {editUserId ? "Update User" : "Add User"}
       </button>
