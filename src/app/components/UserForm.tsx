@@ -1,4 +1,4 @@
-// components/UserForm.tsx
+
 "use client";
 import { FormEvent } from "react";
 import "../globals.css";
@@ -88,8 +88,8 @@ const UserForm: React.FC<UserFormProps> = ({
           <div
             className={`flex items-center justify-center w-20 h-10 border-2 rounded-lg cursor-pointer transition duration-300 ${
               gender === "Male"
-                ? "border-gray-900 bg-gray-600 text-white" // Active state for Male
-                : "border-gray-800 bg-white text-gray-800" // Inactive state for Male
+                ? "border-gray-900 bg-gray-600 text-white" 
+                : "border-gray-800 bg-white text-gray-800"
             }`}
             onClick={() => setGender("Male")}
           >
@@ -98,8 +98,8 @@ const UserForm: React.FC<UserFormProps> = ({
           <div
             className={`flex items-center justify-center w-20 h-10 border-2 rounded-lg cursor-pointer transition duration-300 ${
               gender === "Female"
-                ? "border-gray-800 bg-gray-600 text-white" // Active state for Female
-                : "border-gray-800 bg-white text-gray-800" // Inactive state for Female
+                ? "border-gray-800 bg-gray-600 text-white"
+                : "border-gray-800 bg-white text-gray-800"
             }`}
             onClick={() => setGender("Female")}
           >

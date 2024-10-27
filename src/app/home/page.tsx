@@ -11,8 +11,8 @@ import {
   deleteDoc,
 } from "firebase/firestore";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import UserForm from "../components/UserForm"; // Import UserForm
-import UserCard from "../components/userCard"; // Import UserCard
+import UserForm from "../components/UserForm";
+import UserCard from "../components/userCard"; 
 import * as XLSX from "xlsx"; // Import xlsx library
 
 type User = {

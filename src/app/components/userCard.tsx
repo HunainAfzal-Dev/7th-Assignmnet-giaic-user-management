@@ -15,13 +15,14 @@ type User = {
 
 type UserCardProps = {
   user: User;
-  editUser: (user: User) => Promise<void>; // Ensure this returns a Promise
-  deleteUser: (id: string) => Promise<void>; // Ensure this returns a Promise
+  editUser: (user: User) => Promise<void>;
+  deleteUser: (id: string) => Promise<void>;
 };
 
 const UserCard: React.FC<UserCardProps> = ({ user, editUser, deleteUser }) => {
   const [loading, setLoading] = useState(false);
 
+  
   const handleEdit = async () => {
     setLoading(true);
     try {
@@ -32,6 +33,7 @@ const UserCard: React.FC<UserCardProps> = ({ user, editUser, deleteUser }) => {
       setLoading(false);
     }
   };
+
 
   const handleDelete = async () => {
     setLoading(true);

@@ -113,3 +113,7 @@ body {
   transform: translateY(2px);
   box-shadow: none;
 }
+
+::-webkit-scrollbar{
+  display: none;
+}
